@@ -11,21 +11,19 @@ import 'github_repository_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<GithubDatasourceInterface>()])
 void main() {
-  group('GithubRepository', () {
-    final datasource = MockGithubDatasourceInterface();
-    final repository = GithubRepository(datasource);
+  final datasource = MockGithubDatasourceInterface();
+  final repository = GithubRepository(datasource);
 
-    test('Deve retornar um GithubContainer', () async {
-      when(datasource.getRepositories(any, any))
-          .thenAnswer((_) async => ResultGithubContainerModel());
-      final result = await repository.fetchRepositories('java', 1);
-      expect(result | null, isA<GithubContainer>());
-    });
+  test('Deve retornar um GithubContainer', () async {
+    when(datasource.getRepositories(any, any))
+        .thenAnswer((_) async => ResultGithubContainerModel());
+    final result = await repository.fetchRepositories('java', 1);
+    expect(result | null, isA<GithubContainer>());
+  });
 
-    test('Deve retornar um error se o datasource falhar', () async {
-      when(datasource.getRepositories(any, any)).thenThrow(Exception());
-      final result = await repository.fetchRepositories('java', 1);
-      expect(result.fold(id, id), isA<DatasourceError>());
-    });
+  test('Deve retornar um error se o datasource falhar', () async {
+    when(datasource.getRepositories(any, any)).thenThrow(Exception());
+    final result = await repository.fetchRepositories('java', 1);
+    expect(result.fold(id, id), isA<DatasourceError>());
   });
 }

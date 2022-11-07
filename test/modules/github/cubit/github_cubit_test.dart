@@ -6,7 +6,6 @@ import 'package:desafio_flutter/modules/github/domain/usecases/fetch_github_repo
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import 'github_cubit_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<FetchGithubRepositoriesInterface>()])

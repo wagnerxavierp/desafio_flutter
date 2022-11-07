@@ -30,7 +30,7 @@ jobs:
           reporter: flutter-json
       - uses: VeryGoodOpenSource/very_good_coverage@v1.1.1
         with:
-          min_coverage: 0
+          min_coverage: 80
 
   build_ios:
     name: Build Flutter (iOS)
